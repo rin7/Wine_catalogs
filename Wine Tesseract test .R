@@ -16,3 +16,12 @@ for (i in  1:b){
     d = d + 1
   }
 }
+
+#apply example
+# Construct a 5x6 matrix
+X <- matrix(rnorm(20), nrow=4, ncol=5)
+
+# Sum is the function, any function that we want to apply to our matrix the values of each column with `apply()`
+# 1 is to apply to row, 2 means apply to column, c(1,2) means both row and col
+apply(X, 2, sum)
+
