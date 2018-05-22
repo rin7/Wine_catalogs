@@ -1,8 +1,10 @@
 getwd()
 
 library(stringr)
+library(ggplot2)
 full = readRDS('FullBoxes.rds')
 first_image = rbind(full[[1]])
+head(full)
 head(first_image)
 class(full)
 class(first_image)
@@ -10,10 +12,23 @@ stringr::str_extract_all
 
 
 #selecting price base on pattern which is common among most pages
-pattern <- "[0-9]"
-#selectPrice <- str_extract_all(first_image$text, pattern, simplify = TRUE)
-selectPriceSub <- first_image[(str_extract_all(first_image$text, pattern, simplify = TRUE)),]
-selectPriceSub
+pattern <- "^\\d+(\\.\\d{1,2})?$"
+selectPrice <- grep(pattern, first_image$text, value = TRUE)
+#doesn't work
+#selectPriceSub <- first_image[(str_extract_all(first_image$text, pattern, simplify = TRUE)),]
+selectPrice <- first_image[(grep(pattern, first_image$text)),]
+selectPrice <- as.numeric(selectPrice)
+dim(selectPrice)
+class(selectPrice)
+
+#plot the historgram for each page digit and price dist and also text height
+hist(selectPrice$right)
+#calculate the avg height and sd for the price index 
+numOfRow <- nrow(selectPrice)
+numHeight <- selectPrice$top - selectPrice$bottom
+priceHeight <- sum(numHeight)/numOfRow
+
+
 
 
 #
