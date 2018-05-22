@@ -1,16 +1,19 @@
 getwd()
 
+library(stringr)
 full = readRDS('FullBoxes.rds')
 first_image = rbind(full[[1]])
 head(first_image)
 class(full)
 class(first_image)
+stringr::str_extract_all
+
 
 #selecting price base on pattern which is common among most pages
-pattern <- "[0-9]+.+[0-9]"
-selectPrice <- grep(pattern, first_image$text, value = TRUE)
-selectPriceSub <- first_image[(grep(pattern, first_image$text, value = TRUE)),]
-class(selectPriceSub)
+pattern <- "[0-9]"
+#selectPrice <- str_extract_all(first_image$text, pattern, simplify = TRUE)
+selectPriceSub <- first_image[(str_extract_all(first_image$text, pattern, simplify = TRUE)),]
+selectPriceSub
 
 
 #
