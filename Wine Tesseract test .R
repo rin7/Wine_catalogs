@@ -2,7 +2,15 @@ getwd()
 
 full = readRDS('FullBoxes.rds')
 first_image = rbind(full[[1]])
+head(first_image)
+class(full)
+class(first_image)
 
+#selecting price base on pattern which is common among most pages
+pattern <- "[0-9]+.+[0-9]"
+selectPrice <- grep(pattern, first_image$text, value = TRUE)
+selectPriceSub <- first_image[(grep(pattern, first_image$text, value = TRUE)),]
+class(selectPriceSub)
 
 
 index_left = c()
