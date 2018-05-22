@@ -13,6 +13,7 @@ selectPriceSub <- first_image[(grep(pattern, first_image$text, value = TRUE)),]
 class(selectPriceSub)
 
 
+#
 index_left = c()
 index_right = c()
 d = 1
