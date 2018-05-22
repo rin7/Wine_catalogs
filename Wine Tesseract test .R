@@ -1,4 +1,4 @@
-setwd('/Users/tommylee/Desktop/STA 160/')
+getwd()
 
 full = readRDS('FullBoxes.rds')
 first_image = rbind(full[[1]])
@@ -16,6 +16,9 @@ for (i in  1:b){
     d = d + 1
   }
 }
+dim(first_image)
+y = apply(first_image$left, sum)
+
 
 #apply example
 # Construct a 5x6 matrix
@@ -24,4 +27,14 @@ X <- matrix(rnorm(20), nrow=4, ncol=5)
 # Sum is the function, any function that we want to apply to our matrix the values of each column with `apply()`
 # 1 is to apply to row, 2 means apply to column, c(1,2) means both row and col
 apply(X, 2, sum)
+
+#lapply to work with list
+# Create a list of matrices
+MyList <- list(A,B,C)
+
+# Extract the 2nd column from `MyList` with the selection operator `[` with `lapply()`
+lapply(MyList,"[", , 2)
+
+# Extract the 1st row from `MyList`
+lapply(MyList,"[", 1, )
 
