@@ -17,7 +17,6 @@ selectPrice <- grep(pattern, first_image$text, value = TRUE)
 #doesn't work
 #selectPriceSub <- first_image[(str_extract_all(first_image$text, pattern, simplify = TRUE)),]
 selectPrice <- first_image[(grep(pattern, first_image$text)),]
-selectPrice <- as.numeric(selectPrice)
 dim(selectPrice)
 class(selectPrice)
 
@@ -26,10 +25,17 @@ hist(selectPrice$right)
 #calculate the avg height and sd for the price index 
 numOfRow <- nrow(selectPrice)
 numHeight <- selectPrice$top - selectPrice$bottom
-priceHeight <- sum(numHeight)/numOfRow
-
-
-
+priceHeightAvg <- sum(numHeight)/numOfRow
+#bind indeces height value to data frame 
+selectPriceHeight <- cbind(selectPrice, numHeight) 
+#histogram of indeces height and also their mean and SD
+hist(numHeight)
+priceSD <- sd(numHeight)
+#filtering indeces (price) base on their height using avg height and SD
+priceHeightFilter <- selectPriceHeight[((selectPriceHeight$numHeight < (priceHeightAvg+priceSD)) 
+                                        & (selectPriceHeight$numHeight > (priceHeightAvg-priceSD))),]
+dim(priceHeightFilter)
+hist(priceHeightFilter$numHeight)
 
 #
 index_left = c()
