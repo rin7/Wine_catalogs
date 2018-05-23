@@ -12,7 +12,7 @@ stringr::str_extract_all
 
 
 #selecting price base on pattern which is common among most pages
-pattern <- "^\\d+(\\.\\d{1,2})?$"
+pattern <- "^\\d+\\.\\d{1,2}$"   #problem !!!
 selectPrice <- grep(pattern, first_image$text, value = TRUE)
 #doesn't work
 #selectPriceSub <- first_image[(str_extract_all(first_image$text, pattern, simplify = TRUE)),]
@@ -32,8 +32,8 @@ selectPriceHeight <- cbind(selectPrice, numHeight)
 hist(numHeight)
 priceSD <- sd(numHeight)
 #filtering indeces (price) base on their height using avg height and SD
-priceHeightFilter <- selectPriceHeight[((selectPriceHeight$numHeight < (priceHeightAvg+priceSD)) 
-                                        & (selectPriceHeight$numHeight > (priceHeightAvg-priceSD))),]
+priceHeightFilter <- selectPriceHeight[((selectPriceHeight$numHeight < (priceHeightAvg+(3*priceSD))) 
+                                        & (selectPriceHeight$numHeight > (priceHeightAvg-(3*priceSD)))),]
 dim(priceHeightFilter)
 hist(priceHeightFilter$numHeight)
 
