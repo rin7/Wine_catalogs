@@ -8,6 +8,8 @@ sample[, 2] <- sapply(sample[, 2], as.character)
 accuracy <- adist(truth, sample, ignore.case = F, counts = T, fixed = T)
 diag(accuracy)
 
+bottlePrice <- mapply(adist, truth$name, sample$name)
+
 class(accuracy)
 dim(accuracy)
 
@@ -19,3 +21,5 @@ nrow(sample)
 adist("lasy", "1 lazy 2")
 ## For a "partial approximate match" (as used for agrep):
 adist("lasy", "1 lazy 2", partial = TRUE)
+
+
