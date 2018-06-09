@@ -1,5 +1,6 @@
-# Wine_catalogs
+# Wine Vintage Catalogs
+Data Extraction from wine scanned catalogs from 30’s to 80’s 
 
-Not long ago, catalogs were printed on paper and there exists a plethora of data that is trapped in these catalogs and the goal is to bring the dead data to life. Scanned wine catalogs can provide a lot of data that can help us understand the wine market over time. For this reason, it is useful to find a way to obtain the relevant wine data. Through the use of available OCR methods, we were able to develop an algorithm that extracts the relevant wine data (such as name, producer, region, year, price per bottle, and price per case) from the images.
+We developed an automated method to extract key features such as the wine name, bottle and case prices from 4100 Sherry Lehmann scanned wine catalogs from the 1930’s to 1980’s. 
 
 https://nirvolo.wixsite.com/wine-catalog/
