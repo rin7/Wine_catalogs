@@ -8,3 +8,4 @@ b <- "454 Anjou Rose 1966, Nicolas"
 adist()
 adist(truth,sample, ignore.case = FALSE)
 head(sample)
+sd
